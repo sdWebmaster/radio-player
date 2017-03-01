@@ -18,7 +18,7 @@
   "description": "Reproductor streaming",
   "license": "MIT",
   "homepage": "www.sonoradesign.mx",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
