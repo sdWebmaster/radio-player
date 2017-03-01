@@ -1,0 +1,132 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+
+<!--
+`player-radio`
+
+
+@demo demo/index.html 
+-->
+<dom-module id="player-radio">
+  <template>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      :host img {
+        width: 100%;
+      }
+      .player-image {
+        background-color: #000;
+      }
+      .player-buttons {
+        width: 33.3333%;
+        float: left;
+      }
+      .player-content {
+        width: 63.3333%;
+        float: left;
+        padding-top: 12px;
+      }
+      .control-container {
+        background-color: #F44336;
+        color: #FFF;
+        padding: 10px;
+      }
+      
+      .clearfix {
+        clear: both;
+      }
+    </style>
+
+    <div class="player-container">
+      
+      <div class="player-image">
+        <template is="dom-if" if="{{_hasImage}}">
+          <img src="[[img]]" alt="Player preview">
+        </template>
+      </div>
+
+      <div class="control-container">
+        <div class="player-buttons">
+          <paper-icon-button raised icon="{{_icon}}" on-click="togglePlayer"></paper-icon-button>
+        </div>
+
+         <div class="player-content">
+          <content></content>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'player-radio',
+
+      properties: {
+        src: {
+          type: String,
+          value: 'http://192.99.6.50:9980/;stream.nsv&type=mp3',
+        },
+        autoplay: {
+          type: Boolean,
+          value: false
+        },
+        img: {
+          type: String,
+          value: "player-img-default.jpg"
+        },
+        played:{
+          type:Boolean,
+          value: false,
+          observer: "_changeStatusPlayer"
+        },
+        showImage: {
+          type: Boolean,
+          value: true
+        },
+        _icon: {
+          type: String,
+          value: "av:play-arrow",
+        },
+        _hasImage: {
+          type: Boolean,
+          value: true
+        },
+        _audio: {
+          type: Object
+        }
+      },
+      ready: function(){
+        this._audio = new Audio(this.src);
+
+        this._hasImage = false;
+        if(!this.showImage)
+          this._hasImage = false;
+
+        console.log(this.showImage);
+        if(this.autoplay)
+          audio.play();
+      },
+      _changeStatusPlayer: function(){
+        if(this.played) 
+          this._icon = "av:pause";
+        else 
+          this._icon = "av:play-arrow";
+      },
+      togglePlayer: function() {
+        if(!this.played)
+          this._audio.play();  
+        else 
+          this._audio.pause();
+
+        this.played = !this.played;
+      }
+    });
+  </script>
+</dom-module>

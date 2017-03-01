@@ -1,0 +1,30 @@
+{
+  "name": "radio-player",
+  "main": "player-radio.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-button": "PolymerElements/paper-button#^1.0.14",
+    "paper-icon-button": "PolymerElements/paper-icon-button#^1.1.4"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "authors": [
+    "webmaster@sonoradesign.mx"
+  ],
+  "description": "Reproductor streaming",
+  "license": "MIT",
+  "homepage": "www.sonoradesign.mx",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
